@@ -1,8 +1,11 @@
 # terraform-polkadot-user-data
 
+<p class="callout danger">WIP</p>
+
 ## Features
 
-This module...
+This module builds user data scripts for polkadot nodes.  Includes some sane defaults for prometheus node exporter and
+consul config.
 
 ## Terraform versions
 
@@ -13,7 +16,7 @@ For Terraform v0.12.0+
 ```
 module "this" {
     source = "github.com/robc-io/terraform-polkadot-user-data"
-
+    type = "sentry"
 }
 ```
 
