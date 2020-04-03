@@ -29,6 +29,12 @@ variable "type" {
   default     = "sentry"
 }
 
+variable "is_gcp_api_node" {
+  description = "Is this node running on GCP and is it an API node?"
+  type        = bool
+  default     = false
+}
+
 //------------- Volume
 
 variable "driver_type" {

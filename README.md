@@ -28,6 +28,10 @@ module "this" {
 No issue is creating limit on this module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+No requirements.
+
 ## Providers
 
 | Name | Version |
@@ -38,11 +42,12 @@ No issue is creating limit on this module.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | consul\_enabled | Enable consul service | `bool` | `false` | no |
 | disable\_ipv6 | Disable ipv6 in grub | `bool` | `true` | no |
 | driver\_type | The ebs volume driver - nitro or standard | `string` | `"nitro"` | no |
 | enable\_hourly\_cron\_updates | n/a | `string` | `"false"` | no |
+| is\_gcp\_api\_node | Is this node running on GCP and is it an API node? | `bool` | `false` | no |
 | keys\_update\_frequency | n/a | `string` | `""` | no |
 | log\_config\_bucket | n/a | `string` | `""` | no |
 | log\_config\_key | n/a | `string` | `""` | no |
