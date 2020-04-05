@@ -46,6 +46,7 @@ ${var.driver_type == "standard" && local.ebs_attachment ? data.template_file.sta
 ${var.type == "validator" ? data.template_file.validator.rendered : ""}
 ${var.type == "sentry" ? data.template_file.sentry.rendered : ""}
 ${var.type == "bastion_s3" ? data.template_file.bastion_s3.rendered : ""}
+${var.type == "library" ? data.template_file.library_node.rendered : ""}
 EOF
 
   vars = {}
