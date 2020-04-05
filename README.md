@@ -28,6 +28,10 @@ module "this" {
 No issue is creating limit on this module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+No requirements.
+
 ## Providers
 
 | Name | Version |
@@ -38,7 +42,7 @@ No issue is creating limit on this module.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | consul\_enabled | Enable consul service | `bool` | `false` | no |
 | disable\_ipv6 | Disable ipv6 in grub | `bool` | `true` | no |
 | driver\_type | The ebs volume driver - nitro or standard | `string` | `"nitro"` | no |
@@ -49,6 +53,7 @@ No issue is creating limit on this module.
 | mount\_volumes | Boolean to mount volume | `bool` | `true` | no |
 | node\_tags | The tag to put into the node exporter for consul to pick up the tag of the instance and associate the proper metrics | `string` | `"prep"` | no |
 | prometheus\_enabled | Download and start node exporter | `bool` | `false` | no |
+| provider | What provider is this node running on? | `string` | n/a | yes |
 | s3\_bucket\_name | n/a | `string` | `""` | no |
 | s3\_bucket\_uri | n/a | `string` | `""` | no |
 | ssh\_user | n/a | `string` | `"ubuntu"` | no |

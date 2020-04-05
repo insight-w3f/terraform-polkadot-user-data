@@ -29,6 +29,11 @@ variable "type" {
   default     = "sentry"
 }
 
+variable "provider" {
+  description = "What provider is this node running on?"
+  type        = string
+}
+
 //------------- Volume
 
 variable "driver_type" {
