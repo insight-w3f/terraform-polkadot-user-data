@@ -47,13 +47,13 @@ No requirements.
 | disable\_ipv6 | Disable ipv6 in grub | `bool` | `true` | no |
 | driver\_type | The ebs volume driver - nitro or standard | `string` | `"nitro"` | no |
 | enable\_hourly\_cron\_updates | n/a | `string` | `"false"` | no |
-| is\_azure\_api\_node | Is this node running on Azure and is it an API node? | `bool` | `false` | no |
 | keys\_update\_frequency | n/a | `string` | `""` | no |
 | log\_config\_bucket | n/a | `string` | `""` | no |
 | log\_config\_key | n/a | `string` | `""` | no |
 | mount\_volumes | Boolean to mount volume | `bool` | `true` | no |
 | node\_tags | The tag to put into the node exporter for consul to pick up the tag of the instance and associate the proper metrics | `string` | `"prep"` | no |
 | prometheus\_enabled | Download and start node exporter | `bool` | `false` | no |
+| provider | What provider is this node running on? | `string` | n/a | yes |
 | s3\_bucket\_name | n/a | `string` | `""` | no |
 | s3\_bucket\_uri | n/a | `string` | `""` | no |
 | ssh\_user | n/a | `string` | `"ubuntu"` | no |

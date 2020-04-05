@@ -29,10 +29,9 @@ variable "type" {
   default     = "sentry"
 }
 
-variable "is_azure_api_node" {
-  description = "Is this node running on Azure and is it an API node?"
-  type        = bool
-  default     = false
+variable "provider" {
+  description = "What provider is this node running on?"
+  type        = string
 }
 
 //------------- Volume
