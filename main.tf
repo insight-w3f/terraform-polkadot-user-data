@@ -36,6 +36,7 @@ EOF
 data "template_file" "user_data" {
   template = <<-EOF
 #!/usr/bin/env bash
+${var.provider == "azure" && var.type == "library" ? data.template_file.azure_api_node.rendered : ""}
 ${var.provider == "gcp" && var.type == "library" ? data.template_file.gcp_api_node.rendered : ""}
 ${var.disable_ipv6 ? data.template_file.disable_ipv6.rendered : ""}
 ${var.consul_enabled ? data.template_file.consul.rendered : ""}
