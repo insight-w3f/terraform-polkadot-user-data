@@ -30,6 +30,7 @@ func TestTerraformPlaybookPublic(t *testing.T) {
 		TerraformDir: exampleFolder,
 		Vars: map[string]interface{}{
 			"aws_region":         awsRegion,
+			"cloud_provider": "aws",
 		},
 	}
 

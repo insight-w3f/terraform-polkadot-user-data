@@ -11,8 +11,9 @@ resource "aws_instance" "standard" {
 }
 
 module "standard" {
-  source      = "../.."
-  driver_type = "standard"
+  source         = "../.."
+  driver_type    = "standard"
+  cloud_provider = "aws"
 }
 
 resource "random_pet" "nitro" {
@@ -31,6 +32,7 @@ resource "aws_instance" "nitro" {
 }
 
 module "nitro" {
-  source      = "../.."
-  driver_type = "nitro"
+  source         = "../.."
+  driver_type    = "nitro"
+  cloud_provider = "aws"
 }
