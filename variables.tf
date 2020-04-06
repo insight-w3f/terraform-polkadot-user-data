@@ -1,3 +1,8 @@
+variable "region" {
+  description = "The region you are deploying into - only relevant for consul"
+  type        = string
+  default     = ""
+}
 
 variable "disable_ipv6" {
   description = "Disable ipv6 in grub"

@@ -1,5 +1,3 @@
-data "aws_region" "this" {}
-
 locals {
   ebs_attachment = contains(["sentry", "validator"], var.type) && var.mount_volumes
 }
