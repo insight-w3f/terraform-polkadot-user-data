@@ -28,6 +28,10 @@ module "this" {
 No issue is creating limit on this module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+No requirements.
+
 ## Providers
 
 | Name | Version |
@@ -37,7 +41,7 @@ No issue is creating limit on this module.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | cloud\_provider | What provider is this node running on? | `string` | n/a | yes |
 | consul\_enabled | Enable consul service | `bool` | `false` | no |
 | disable\_ipv6 | Disable ipv6 in grub | `bool` | `true` | no |

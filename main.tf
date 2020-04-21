@@ -1,5 +1,5 @@
 locals {
-  ebs_attachment = contains(["sentry", "validator"], var.type) && var.mount_volumes
+  ebs_attachment = contains(["sentry", "validator", "library"], var.type) && var.mount_volumes
 }
 
 data "template_file" "disable_ipv6" {
