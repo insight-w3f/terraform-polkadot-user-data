@@ -9,7 +9,7 @@ PRIVIP=$(curl "http://metadata.google.internal/computeMetadata/v1/instance/netwo
 PRIVIP=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4/)
 %{endif}
 
-tee -a /etc/consul.d/10bind.json << EOJ
+tee -a /etc/consul/consul.d/10bind.json << EOJ
 {
 "advertise_addr": "$PRIVIP",
 "advertise_addr_wan": "$PRIVIP",
@@ -17,8 +17,8 @@ tee -a /etc/consul.d/10bind.json << EOJ
 }
 EOJ
 
-chown consul:bin /etc/consul.d/10bind.json
-chmod 644 /etc/consul.d/10bind.json
+chown consul:bin /etc/consul/consul.d/10bind.json
+chmod 644 /etc/consul/consul.d/10bind.json
 
 systemctl enable consul
 systemctl start consul

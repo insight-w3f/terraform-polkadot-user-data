@@ -2,10 +2,6 @@ data "template_file" "prometheus_consul" {
   template = <<-EOF
 ## Prometheus setup
 # Set node exporter version
-# Either pin to latest
-#NODE_EXPORTER_VERSION='latest'
-# Or pin a specific release
-# NOTE: "latest" doensn't seem to work :/
 NODE_EXPORTER_VERSION='0.18.1'
 
 useradd -m -s /bin/bash prometheus
