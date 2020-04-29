@@ -21,8 +21,8 @@ tee -a /home/ubuntu/host-node-exporter-payload.json << HOSTPAYLOADEND
     "Check": {
       "DeregisterCriticalServiceAfter": "60m",
       "id": "host-prometheus",
-      "name": "HTTP on port 9101",
-      "http": "http://$PRIVIP:9101",
+      "name": "HTTP on port 9100",
+      "http": "http://$PRIVIP:9100",
       "interval": "10s",
       "timeout": "1s"
     }
