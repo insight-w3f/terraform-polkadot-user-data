@@ -24,7 +24,7 @@ systemctl enable consul
 systemctl start consul
 
 consul services register /home/ubuntu/host-node-exporter-payload.json
-consul services register /home/ubuntu/docker-node-exporter-payload.json
+consul services register /home/ubuntu/polkadot-client-node-exporter-payload.json
 
 EOF
 

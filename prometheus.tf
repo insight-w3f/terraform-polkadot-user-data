@@ -20,7 +20,7 @@ tee -a /home/ubuntu/host-node-exporter-payload.json << HOSTPAYLOADEND
     "Port": 9101,
     "Check": {
       "DeregisterCriticalServiceAfter": "60m",
-      "id": "prometheus-api",
+      "id": "host-prometheus",
       "name": "HTTP on port 9101",
       "http": "http://$PRIVIP:9101",
       "interval": "10s",
@@ -40,7 +40,7 @@ tee -a /home/ubuntu/polkadot-client-node-exporter-payload.json << CLIENTPAYLOADE
     "Port": 9615,
     "Check": {
       "DeregisterCriticalServiceAfter": "60m",
-      "id": "prometheus-api",
+      "id": "polkadot-client-prometheus",
       "name": "HTTP on port 9615",
       "http": "http://$PRIVIP:9615/metrics",
       "interval": "10s",
