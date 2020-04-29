@@ -44,8 +44,8 @@ tee -a /home/ubuntu/polkadot-client-node-exporter-payload.json << CLIENTPAYLOADE
     "Check": {
       "DeregisterCriticalServiceAfter": "60m",
       "id": "polkadot-client-prometheus",
-      "name": "HTTP on port 9615",
-      "http": "http://$PRIVIP:9615/metrics",
+      "name": "HTTP on port 9610",
+      "http": "http://$PRIVIP:9610/metrics",
       "header": {"Authorization": ["Basic $AUTH_STRING"]},
       "interval": "10s",
       "timeout": "1s"
