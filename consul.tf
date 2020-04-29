@@ -27,7 +27,7 @@ systemctl enable consul
 systemctl start consul
 
 echo "Waiting for Consul to join..."
-until [ $(curl -s http://localhost:8500/v1/health/node/$${INSTANCE_ID} | jq -r '.[0] | .Status') == "passing" ]
+until [ $(curl -s http://localhost:8500/v1/health/node/$INSTANCE_ID | jq -r '.[0] | .Status') == "passing" ]
 do
   printf '.'
   sleep 5
