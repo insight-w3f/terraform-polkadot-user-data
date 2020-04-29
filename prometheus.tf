@@ -1,51 +1,28 @@
 data "template_file" "prometheus_consul" {
   template = <<-EOF
-## Prometheus setup
-# Set node exporter version
-NODE_EXPORTER_VERSION='0.18.1'
+%{if var.cloud_provider == "gcp"}
+INSTANCE_ID=$(curl "http://metadata.google.internal/computeMetadata/v1/instance/name" -H "Metadata-Flavor: Google")
+PRIVIP=$(curl "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip" -H "Metadata-Flavor: Google")
+%{endif}
 
-useradd -m -s /bin/bash prometheus
-
-curl -L -O  https://github.com/prometheus/node_exporter/releases/download/v$NODE_EXPORTER_VERSION/node_exporter-$NODE_EXPORTER_VERSION.linux-amd64.tar.gz
-
-tar -xzvf node_exporter-$NODE_EXPORTER_VERSION.linux-amd64.tar.gz
-mv node_exporter-$NODE_EXPORTER_VERSION.linux-amd64 /home/prometheus/node_exporter
-rm node_exporter-$NODE_EXPORTER_VERSION.linux-amd64.tar.gz
-chown -R prometheus:prometheus /home/prometheus/node_exporter
-
-# Add node_exporter as systemd service
-tee -a /etc/systemd/system/node_exporter.service << NODEEXPEND
-[Unit]
-Description=Node Exporter
-Wants=network-online.target
-After=network-online.target
-[Service]
-User=prometheus
-ExecStart=/home/prometheus/node_exporter/node_exporter
-[Install]
-WantedBy=default.target
-NODEEXPEND
-
-systemctl daemon-reload
-systemctl start node_exporter
-systemctl enable node_exporter
-
-EC2_INSTANCE_ID=$(wget -q -O - http://169.254.169.254/latest/meta-data/instance-id || die \"wget instance-id has failed: $?\")
+%{if var.cloud_provider == "aws"}
+INSTANCE_ID=$(wget -q -O - http://169.254.169.254/latest/meta-data/instance-id || die \"wget instance-id has failed: $?\")
 PRIVIP=$(wget -q -O - http://169.254.169.254/latest/meta-data/local-ipv4 || die \"wget local-ipv4 has failed: $?\")
+%{endif}
 
 tee -a /home/ubuntu/host-node-exporter-payload.json << HOSTPAYLOADEND
 {
   "service": {
-    "ID": "host_$EC2_INSTANCE_ID",
+    "ID": "host_$INSTANCE_ID",
     "Name": "consul_node_exporter",
     "Tags": ["${var.node_tags}"],
     "Address": "$PRIVIP",
-    "Port": 9100,
+    "Port": 9101,
     "Check": {
       "DeregisterCriticalServiceAfter": "60m",
       "id": "prometheus-api",
-      "name": "HTTP on port 9100",
-      "http": "http://$PRIVIP:9100",
+      "name": "HTTP on port 9101",
+      "http": "http://$PRIVIP:9101",
       "interval": "10s",
       "timeout": "1s"
     }
@@ -53,25 +30,25 @@ tee -a /home/ubuntu/host-node-exporter-payload.json << HOSTPAYLOADEND
 }
 HOSTPAYLOADEND
 
-tee -a /home/ubuntu/docker-node-exporter-payload.json << DOCKERPAYLOADEND
+tee -a /home/ubuntu/polkadot-client-node-exporter-payload.json << CLIENTPAYLOADEND
 {
   "service": {
-    "ID": "docker_$EC2_INSTANCE_ID",
+    "ID": "polkadot_$INSTANCE_ID",
     "Name": "consul_node_exporter",
     "Tags": ["${var.node_tags}"],
     "Address": "$PRIVIP",
-    "Port": 9323,
+    "Port": 9615,
     "Check": {
       "DeregisterCriticalServiceAfter": "60m",
       "id": "prometheus-api",
-      "name": "HTTP on port 9323",
-      "http": "http://$PRIVIP:9323/metrics",
+      "name": "HTTP on port 9615",
+      "http": "http://$PRIVIP:9615/metrics",
       "interval": "10s",
       "timeout": "1s"
     }
   }
 }
-DOCKERPAYLOADEND
+CLIENTPAYLOADEND
 
 EOF
   vars     = {}
