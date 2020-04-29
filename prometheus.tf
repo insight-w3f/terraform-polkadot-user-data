@@ -23,6 +23,7 @@ tee -a /home/ubuntu/host-node-exporter-payload.json << HOSTPAYLOADEND
       "id": "host-prometheus",
       "name": "HTTP on port 9100",
       "http": "http://$PRIVIP:9100",
+      "header": {"Authorization": "Basic ${var.prometheus_user}:${var.prometheus_password}"},
       "interval": "10s",
       "timeout": "1s"
     }
@@ -43,6 +44,7 @@ tee -a /home/ubuntu/polkadot-client-node-exporter-payload.json << CLIENTPAYLOADE
       "id": "polkadot-client-prometheus",
       "name": "HTTP on port 9615",
       "http": "http://$PRIVIP:9615/metrics",
+      "header": {"Authorization": "Basic ${var.prometheus_user}:${var.prometheus_password}"},
       "interval": "10s",
       "timeout": "1s"
     }

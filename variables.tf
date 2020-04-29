@@ -52,3 +52,15 @@ variable "mount_volumes" {
   type        = bool
   default     = true
 }
+
+variable "prometheus_user" {
+  description = "Username to pass through for node exporter"
+  type        = string
+  default     = ""
+}
+
+variable "prometheus_password" {
+  description = "Password to pass through for node exporter"
+  type        = string
+  default     = ""
+}

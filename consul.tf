@@ -23,6 +23,9 @@ chmod 644 /etc/consul/consul.d/10bind.json
 systemctl enable consul
 systemctl start consul
 
+echo "Waiting for Consul to join..."
+sleep 60
+
 consul services register /home/ubuntu/host-node-exporter-payload.json
 consul services register /home/ubuntu/polkadot-client-node-exporter-payload.json
 

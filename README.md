@@ -53,6 +53,8 @@ No requirements.
 | mount\_volumes | Boolean to mount volume | `bool` | `true` | no |
 | node\_tags | The tag to put into the node exporter for consul to pick up the tag of the instance and associate the proper metrics | `string` | `"prep"` | no |
 | prometheus\_enabled | Download and start node exporter | `bool` | `false` | no |
+| prometheus\_password | Password to pass through for node exporter | `string` | `""` | no |
+| prometheus\_user | Username to pass through for node exporter | `string` | `""` | no |
 | region | The region you are deploying into - only relevant for consul | `string` | `""` | no |
 | s3\_bucket\_name | n/a | `string` | `""` | no |
 | s3\_bucket\_uri | n/a | `string` | `""` | no |
