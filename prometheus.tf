@@ -19,7 +19,7 @@ tee -a /home/ubuntu/host-node-exporter-payload.json << HOSTPAYLOADEND
     "Name": "consul_node_exporter",
     "Tags": ["${var.node_tags}"],
     "Address": "$PRIVIP",
-    "Port": 9101,
+    "Port": 9100,
     "Check": {
       "DeregisterCriticalServiceAfter": "60m",
       "id": "host-prometheus",
@@ -40,7 +40,7 @@ tee -a /home/ubuntu/polkadot-client-node-exporter-payload.json << CLIENTPAYLOADE
     "Name": "consul_node_exporter",
     "Tags": ["${var.node_tags}"],
     "Address": "$PRIVIP",
-    "Port": 9615,
+    "Port": 9610,
     "Check": {
       "DeregisterCriticalServiceAfter": "60m",
       "id": "polkadot-client-prometheus",
