@@ -16,7 +16,7 @@ tee -a /etc/consul/consul.d/10bind.json << EOJ
 "advertise_addr": "$PRIVIP",
 "advertise_addr_wan": "$PRIVIP",
 "bind_addr": "$PRIVIP",
-"host_name": "$INSTANCE_ID"
+"node_name": "$INSTANCE_ID"
 }
 EOJ
 
