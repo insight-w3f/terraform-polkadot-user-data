@@ -2,7 +2,7 @@ data "template_file" "library_node" {
   template = <<-EOT
     systemctl stop polkadot
     mkdir -p /data/polkadot
-    chmod a+x /data/polkadot
+    chmod a+rw /data/polkadot
     chown polkadot:polkadot /data/polkadot
     if [[ -d /home/polkadot/.local/share/polkadot/chains ]]
     then
